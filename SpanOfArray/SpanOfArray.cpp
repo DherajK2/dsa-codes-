@@ -1,24 +1,37 @@
-#include<iostream>
+#include <iostream>
+#include <limits>
 using namespace std;
-int main(){
-    int arr[]={5,3,4,11,9,2};
 
-    int max=arr[0];
-    int min=arr[0];
-    int span=0;
-    int n = sizeof(arr)/sizeof(arr[0]);
-    for(int i=0;i<n;i++){
-        if(arr[i]>max){
-            max=arr[i];
-        }
-        if(arr[i]<min){
-            min=arr[i];
-        }
+// function returns span
+int findSpan(int arr[], int n) {
+
+    int max = numeric_limits<int>::min();
+    int min = numeric_limits<int>::max();
+
+    for (int i = 0; i < n; i++) {
+        if (arr[i] > max) max = arr[i];
+        if (arr[i] < min) min = arr[i];
     }
-    cout << "Max : " << max << endl;
-    cout << "Min : " << min << endl;
-    span = max - min;
-    cout <<"Span of Array :" << span << endl;
+
+    return max - min;
+}
+
+int main() {
+
+    int n;
+    cout << "Enter size of array: ";
+    cin >> n;
+
+    int arr[n];
+
+    cout << "Enter elements:" << endl;
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+
+    int span = findSpan(arr, n);
+
+    cout << "Span of Array: " << span << endl;
 
     return 0;
 }

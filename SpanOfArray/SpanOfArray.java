@@ -1,19 +1,38 @@
 package SpanOfArray;
-public class SpanOfArray {
-    public static void main(String[] args) {
-        int arr[]={5,3,4,11,9,2};
+import java.util.Scanner;
 
-        int max=arr[0];
-        int min=arr[0];
-        int span=0;
-        for(int i=0;i<arr.length;i++){
-            if(arr[i]>max)max=arr[i];
-            if(arr[i]<min)min=arr[i];
+class SpanOfArray {
+
+    // function returns span
+    static int findSpan(int[] arr) {
+
+        int max = Integer.MIN_VALUE;
+        int min = Integer.MAX_VALUE;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] > max) max = arr[i];
+            if (arr[i] < min) min = arr[i];
         }
-            span = max - min;
-            System.out.println("Max : "+max);
-            System.out.println("Min : "+min);
-            System.out.println("Span Of Array :"+span);
-        }
+
+        return max - min;
     }
 
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter size of array: ");
+        int n = sc.nextInt();
+
+        int[] arr = new int[n];
+
+        System.out.println("Enter elements:");
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        int span = findSpan(arr);
+
+        System.out.println("Span of Array: " + span);
+    }
+}
